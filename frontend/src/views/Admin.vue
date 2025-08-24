@@ -121,7 +121,7 @@
 import { ref, reactive, onMounted } from "vue";
 import { getBlogs, createBlog, updateBlog, deleteBlog } from "../services/blogService";
 import BlogCard from "@/components/BlogCard.vue";
-import useSearch from "@/composables/useSearch.jta";
+import useSearch from "@/composables/useSearch.ts";
 
 const blogs = ref([]);
 const loading = ref(false);

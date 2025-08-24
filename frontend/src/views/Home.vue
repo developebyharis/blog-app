@@ -2,7 +2,7 @@
 import { ref, onMounted } from "vue";
 import { getBlogs } from "../services/blogService";
 import BlogCard from "@/components/BlogCard.vue";
-import useSearch from "@/composables/useSearch.jta";
+import useSearch from "@/composables/useSearch.ts";
 
 const blogs = ref([]);
 const fetchBlogs = async () => {
