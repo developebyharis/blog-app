@@ -135,6 +135,6 @@ MIT License – free to use and modify.
 
 ## 🙌 Author
 
-**Haris Khan** – [GitHub Profile](https://github.com/developebyharis) | [Portfolio](https://developewithharis.com)
+**Haris Khan** – [GitHub Profile](https://github.com/developebyharis) | [Portfolio](https://hariskhan.vercel.app)
 
 ```
