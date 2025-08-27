@@ -1,7 +1,7 @@
 import { ref, computed } from 'vue';
 
 export default function useSearch(items: any, searchKeys: string[], itemsPerPage = 5) {
-  const searchQuery = ref('');
+  const searchQuery = ref(''); // we use ref for premitive data types
   const currentPage = ref(1);
 
   const filteredItems = computed(() => {

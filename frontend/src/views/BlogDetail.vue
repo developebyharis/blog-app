@@ -1,37 +1,48 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
-import { getBlogs } from "@/services/blogService";
+import { getAllBlogs } from "@/services/blogService";
 
 const route = useRoute();
 const blog = ref(null);
+const loading = ref(true);
 
 const fetchBlog = async () => {
-  const res = await getBlogs();
+  const res = await getAllBlogs();
   blog.value = res.data.find((b) => b.id === route.params.id);
+  loading.value = false;
 };
 
 onMounted(fetchBlog);
 </script>
 
 <template>
-  <div class="min-h-screen py-8 px-4">
-    <div v-if="blog" class=" p-6 sm:p-8">
-      <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
-        {{ blog.title }}
-      </h1>
+  <div class="min-h-screen flex justify-center px-4 py-6">
+    <div class="w-full max-w-3xl">
+      <!-- Blog Skeleton Loader -->
+      <div v-if="loading" class="space-y-4">
+        <Skeleton height="2rem" width="80%" />
+        <Skeleton height="1.5rem" width="90%" />
+        <Skeleton height="1.5rem" width="95%" />
+        <Skeleton height="1.5rem" width="60%" />
+      </div>
 
-      <p class="text-gray-700 text-base sm:text-lg leading-relaxed mb-6">
-        {{ blog.content }}
-      </p>
+      <!-- Blog Content -->
+      <div v-else>
+        <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+          {{ blog.title }}
+        </h1>
 
-      <p class="text-gray-400 text-sm sm:text-base italic text-right">
-        — {{ blog.author }}
-      </p>
-    </div>
+        <p class="text-gray-700 text-lg leading-relaxed mb-6">
+          {{ blog.content }}
+        </p>
 
-    <div v-else class="text-center text-gray-500 mt-20">
-      Loading blog...
+        <Divider />
+
+        <p class="text-gray-500 italic text-right text-sm sm:text-base">
+          — {{ blog.author.name }}
+        </p>
+      </div>
     </div>
   </div>
 </template>

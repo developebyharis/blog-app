@@ -11,8 +11,5 @@ export class CreateBlogDto {
   @MinLength(10, { message: "Content must be at least 10 characters long" })
   content!: string;
 
-  @IsNotEmpty({ message: "Author is required" })
-  @IsString({ message: "Author must be a string" })
-  @MaxLength(100, { message: "Author cannot exceed 100 characters" })
-  author: string;
+ 
 }
